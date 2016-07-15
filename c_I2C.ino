@@ -318,7 +318,7 @@ void SendBufToCamera() {
     }
 #endif
     break;
-  case SET_CAMERA_3D_SYNCHRONIZE:
+  case SET_CAMERA_3D_SYNCHRONIZE: //SH
 #ifdef USE_GENLOCK
     if (1) { // send to Dongle
       switch (buf[3]) {

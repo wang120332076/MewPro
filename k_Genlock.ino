@@ -28,14 +28,14 @@ void stopGenlock()
 }
 
 void setupGenlock()
-{
+{ //Seven: No need to setup genlock if using Dual Hero
 }
 
 void checkGenlock()
 {
   noInterrupts();
-  if (timelapse > 0 && !waiting && millis() - previous_sync >= timelapse) {
-    buf[0] = 3; buf[1] = 'S'; buf[2] = 'Y'; buf[3] = 2;
+  if (timelapse > 0 && !waiting && millis() - previous_sync >= timelapse) { 
+    buf[0] = 3; buf[1] = 'S'; buf[2] = 'Y'; buf[3] = 2;         //Seven: To send this, timelapse must > 0(greater than 0)
     SendBufToCamera();
   }
   interrupts();
