@@ -19,7 +19,7 @@ void startGenlock()
   }
 }
 
-const char ackString[] PROGMEM = "\203FN\013";
+const char ackString[] PROGMEM = "\203FN\013";    //Seven: 5 chars in acknowlegde string including '\0'
 
 void stopGenlock()
 {

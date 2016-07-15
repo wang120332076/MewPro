@@ -137,7 +137,7 @@ boolean debug = true;
 //********************************************************
 // k_Genlock: Generator Lock
 //   Note: MewPro #0 in dual dongle configuration should always boolean debug = false;
-#undef  USE_GENLOCK
+#define  USE_GENLOCK       
 
 //********************************************************
 // l_TurnedOn: 7-segment display to monitor camera's status
@@ -173,7 +173,7 @@ void setup()
   // Remark. Arduino Pro Mini 328 3.3V 8MHz is too slow to catch up with the highest 115200 baud.
   //     cf. http://forum.arduino.cc/index.php?topic=54623.0
   // Set 57600 baud or slower.
-  Serial_begin(57600);
+  Serial_begin(57600);              //Seven: Slow down baud rate here
 #ifdef UART_RECEIVER_DISABLE
 #ifndef __AVR_ATmega32U4__
   UCSR0B &= (~_BV(RXEN0));
@@ -187,7 +187,7 @@ void setup()
   setupIRremote();
   setupLightSensor();
   setupPIRSensor();
-  setupGenlock();
+  setupGenlock();                 //Seven: Remain this line and remove other setup()s
   setupTurnedOn();
 
   setupLED(); // onboard LED setup 
@@ -223,14 +223,14 @@ void loop()
     }
   }
   checkTimeAlarms();
-  checkBacpacCommands();
-  checkCameraCommands();
+  checkBacpacCommands();  //Seven: Check this
+  checkCameraCommands();  //Seven: Check this
   checkSwitch();
   checkIRremote();
   checkLightSensor();
   checkPIRSensor();
   checkVMD();
-  checkGenlock();
-  checkStatus();
+  checkGenlock();       //Seven: Check this
+  checkStatus();        //Seven: It's no use, just ignore this 
 }
 
